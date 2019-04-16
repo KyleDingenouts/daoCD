@@ -217,7 +217,6 @@ public class AppTest extends TestCase {
 		manager.saveReiziger(r1);
 
 		// assert
-		
 		verify(rdao).delete(r1);
 		verify(rdao, times(1)).save(r1);
 
