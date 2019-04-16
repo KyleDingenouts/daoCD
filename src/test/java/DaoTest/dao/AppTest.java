@@ -193,7 +193,7 @@ public class AppTest extends TestCase {
 	
 	
 	
-	//actually tests hte database
+	//actually tests the database
 	public void testMockCallingRealMethods() throws SQLException {
 
 	
@@ -208,8 +208,8 @@ public class AppTest extends TestCase {
 		Reiziger r1 = new Reiziger(naam, gbdatum);
 		OvChipkaart o1 = new OvChipkaart("student weekend", r1);
 		when(rdao.delete(argThat(new IsReiziger()))).thenReturn(true);
-		doCallRealMethod().when(rdao).delete(argThat(new IsReiziger()));
-		doCallRealMethod().when(rdao).save(argThat(new IsReiziger()));
+		//doCallRealMethod().when(rdao).delete(argThat(new IsReiziger()));
+		//doCallRealMethod().when(rdao).save(argThat(new IsReiziger()));
 		
 		// act
 		manager.deleteovchipkaart(o1);
