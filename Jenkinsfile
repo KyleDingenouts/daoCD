@@ -6,14 +6,14 @@ pipeline {
         }
     }
     stages {
-	stage('Sonarqube') {
-    steps {
-        withSonarQubeEnv('SonarServer') {
-            sh "${mvnhome}/bin/sonar-scanner"
+   stage('Build and Code Quality Test') {
+            steps {
+                withSonarQubeEnv('scanserver') {
+                    // Optionally use a Maven environment you've configured already
+                    sh 'mvn -B -DskipTests clean package sonar:sonar'
         }
-      
-    }
-}
+			}
+			}
    
     stage('unittests'){
 	steps{
