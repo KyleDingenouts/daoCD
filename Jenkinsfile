@@ -6,7 +6,11 @@ pipeline {
         }
     }
     stages {
-   
+	
+     stage('SonarQube analysis') {
+    withSonarQubeEnv(installationName: 'SonarServer') { // You can override the credential to be used
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
+    }
     stage('unittests'){
 	steps{
 	sh 'mvn test'
