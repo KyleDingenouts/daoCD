@@ -9,8 +9,8 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "sudohub.nl:8082"
-        NEXUS_REPOSITORY = "maven-nexus-repo"
-        NEXUS_CREDENTIAL_ID = "jenkins-local"
+        NEXUS_REPOSITORY = "maven-demo-repo"
+        NEXUS_CREDENTIAL_ID = "jenkins"
     }
     stages {
 
@@ -27,6 +27,17 @@ pipeline {
 
         }
 	    }
+
+      stage("mvn build") {
+            steps {
+                script {
+                    // If you are using Windows then you should use "bat" step
+                    // Since unit testing is out of the scope we skip them
+                    sh 'mvn package -DskipTests=true'
+                }
+            }
+        }
+
       stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
