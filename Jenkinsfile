@@ -10,7 +10,7 @@ pipeline {
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "sudohub.nl:8082"
         NEXUS_REPOSITORY = "maven-demo-repo"
-        NEXUS_CREDENTIAL_ID = "jenkins"
+        NEXUS_CREDENTIAL_ID = "nexus-credentials"
     }
     stages {
 
