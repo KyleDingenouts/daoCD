@@ -14,31 +14,29 @@ pipeline {
     }
     stages {
 
-      stage('unittests'){
+      stage('Unit tests'){
 	       steps{
 	         sh 'mvn test'
 	       }
 
 	    }
 
-      stage('mutation tests'){
+      stage('Mutation tests'){
         steps{
           sh 'mvn org.pitest:pitest-maven:mutationCoverage'
 
         }
 	    }
 
-      stage("mvn build") {
+      stage("Build Maven") {
             steps {
                 script {
-                    // If you are using Windows then you should use "bat" step
-                    // Since unit testing is out of the scope we skip them
                     sh 'mvn package -DskipTests=true'
                 }
             }
         }
 
-      stage("Publish to Nexus Repository Manager") {
+      stage("Publish to Nexus") {
             steps {
                 script {
                     pom = readMavenPom file: "pom.xml";
